@@ -3,4 +3,6 @@ Rails.application.routes.draw do
 
   get '/' => 'static#home'
 
+  resources :networks
+
 end
