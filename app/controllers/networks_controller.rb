@@ -21,6 +21,15 @@ class NetworksController < ApplicationController
         find_network
     end
 
+    def add_device_form
+        find_network
+        render 'add_device'
+    end
+
+    def add_device
+
+    end
+
     private
 
     def network_params

@@ -1,0 +1,26 @@
+<h1>Add Device</h1>
+
+<%= form_with url: "networks/#{@network.id}/add_device", method: :post do |f| %>
+
+    <%= f.label 'Name:' %>
+    <% f.textfield :name, list: "device_name_autocomplete" %><br>
+    <datalist id="device_name_autocomplete">
+        <% Device.all.each do |device| %>
+            <option value="<%= device.name %>">
+        <% end %>
+    </datalist>
+
+    <%= f.label "Device Type:" %>
+    <%= f.text_field :type, list: "device_type_autocomplete" %><br>
+    <datalist id="device_type_autocomplete">
+        <% Device.all.each do |device| %>
+            <option value="<%= device.type %>">
+        <% end %>
+    </datalist>
+
+    <%= f.label "Connected Device:" %>
+    <%= f.select(:device, :connected_device_id, @network.device_array << "NONE" %>
+
+    <%= f.submit "Add Device" %>
+
+<% end %>
