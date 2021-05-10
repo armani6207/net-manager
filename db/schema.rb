@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_10_194922) do
+ActiveRecord::Schema.define(version: 2021_05_10_200033) do
 
   create_table "connections", force: :cascade do |t|
     t.integer "device_id"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2021_05_10_194922) do
   create_table "networks", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
