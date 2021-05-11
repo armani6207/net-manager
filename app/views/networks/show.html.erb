@@ -8,10 +8,12 @@
 
 <ul>
     <% @network.devices.each do |d| %>
+        <% con = d.connections.find_by( network_id: @network.id) %>
         <li>
-            <h4><%= d.connections.find_by( network_id: @network.id).device_nick_name %>
+            <h4><%= con.device_nick_name %>
             <p><%= d.name %></p>
             <p><%= d.device_type %></p>
+            <%= button_to "remove device", delete_connection_path(con), method: :delete  %>
         <li>
     <% end %>
 </ul>

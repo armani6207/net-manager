@@ -11,4 +11,6 @@ Rails.application.routes.draw do
 
   post 'networks/:id/add_device' => 'networks#add_device'
 
+  delete '/connections/:id' => 'connections#destroy', :as => 'delete_connection'
+
 end
