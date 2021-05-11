@@ -7,4 +7,8 @@ Rails.application.routes.draw do
 
   resources :devices
 
+  get 'networks/:id/add_device' => 'networks#add_device_form'
+
+  post 'networks/:id/add_device' => 'networks#add_device'
+
 end

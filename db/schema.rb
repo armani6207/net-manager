@@ -10,21 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_10_200459) do
+ActiveRecord::Schema.define(version: 2021_05_11_140716) do
 
   create_table "connections", force: :cascade do |t|
     t.integer "device_id"
     t.integer "network_id"
-    t.integer "conected_device_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "device_nick_name"
   end
 
   create_table "devices", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
-    t.string "type"
+    t.string "device_type"
   end
 
   create_table "networks", force: :cascade do |t|

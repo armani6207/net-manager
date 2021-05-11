@@ -1,1 +1,17 @@
 <h1><%= @network.name %></h1>
+
+<form action="/networks/<%= @network.id %>/add_device" accept-charset="UTF-8" method="get">
+    <input type="submit" value="Add Device" >
+</form>
+
+<h3>Devices:</h4>
+
+<ul>
+    <% @network.devices.each do |d| %>
+        <li>
+            <h4><%= d.connections.find_by( network_id: @network.id).device_nick_name %>
+            <p><%= d.name %></p>
+            <p><%= d.device_type %></p>
+        <li>
+    <% end %>
+</ul>

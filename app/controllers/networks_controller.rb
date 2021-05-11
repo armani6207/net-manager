@@ -23,11 +23,18 @@ class NetworksController < ApplicationController
 
     def add_device_form
         find_network
+        @ary = @network.device_array
         render 'add_device'
     end
 
     def add_device
+        find_network
+        @device = Device.find_or_create_by(params.permit(:name, :device_type))
+        @network.devices << @device
 
+        @device.connections.find_by(network_id: @network.id).device_nick_name = params[:nickname]
+
+        redirect_to network_path(@network)
     end
 
     private
