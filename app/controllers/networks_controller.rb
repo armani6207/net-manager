@@ -1,4 +1,6 @@
 class NetworksController < ApplicationController
+
+
     def new
         @network = Network.new
     end
@@ -32,7 +34,7 @@ class NetworksController < ApplicationController
         @device = Device.find_or_create_by(params.permit(:name, :device_type))
         @network.devices << @device
 
-        @device.connections.find_by(network_id: @network.id).device_nick_name = params[:nickname]
+        @device.connections.find_by(network_id: @network.id).update(device_nick_name: params[:nickname])
 
         redirect_to network_path(@network)
     end
