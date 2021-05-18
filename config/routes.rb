@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   post '/sessions' => 'sessions#create'
 
+  get '/logout' => 'sessions#destroy', :as => 'logout'
+
   get 'networks/:id/add_device' => 'networks#add_device_form'
 
   post 'networks/:id/add_device' => 'networks#add_device'
