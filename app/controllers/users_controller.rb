@@ -44,6 +44,12 @@ class UsersController < ApplicationController
         end
     end
 
+    def networks
+        validate_user
+    end
+
+
+
     private
 
     def validate_user

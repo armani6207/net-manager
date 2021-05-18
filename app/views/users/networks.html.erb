@@ -1,0 +1,13 @@
+<h1>Your Networks</h1>
+
+<%= button_to 'Create Network', new_network_path, method: :get %>
+
+<ul>
+    <% @user.networks.each do |network| %>
+        <li>
+        <h3><%= link_to network.name, network_path(network) %></h3>
+        <p><%= pluralize(network.devices.count, 'Device') %></p>
+        </li>
+    <% end %>
+
+</ul>

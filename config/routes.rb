@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :show, :edit, :update] 
 
+  get '/users/:id/networks' => 'users#networks', :as => 'user_networks'
+
   get '/login' => 'sessions#new', :as => 'login'
 
   post '/sessions' => 'sessions#create'
