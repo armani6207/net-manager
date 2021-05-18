@@ -1,12 +1,11 @@
-<div class='form'>
+
 <%= form_for [@user, @network] do |f| %>
     <div class='field'>
     <%= f.text_field :name, placeholder: 'Name' %><br>
     </div>
 
     <div class='button'>
-    <%= f.submit 'Create' %>
+    <%= f.submit 'Submit' %>
     </div>
 
 <% end %>
-</div>

@@ -26,24 +26,42 @@ class NetworksController < ApplicationController
 
     def update
         find_network
-        @network.update(network_params)
-        redirect_to user_network_path(@user, @network)
+        @network.assign_attributes(network_params)
+
+        if @network.save
+            redirect_to user_network_path(@user, @network)
+        else
+            render 'edit'
+        end
     end
 
     def add_device_form
         find_network
+        @connection = Connection.new
         @ary = @network.device_array
         render 'add_device'
     end
 
     def add_device
         find_network
+
+        @device = Device.new
+        
+        if !params[:name].blank? & !params[:device_type].blank?
         @device = Device.find_or_create_by(params.permit(:name, :device_type))
-        @connection = @network.connections.create(device_id: @device.id)
+        end
 
-        @connection.update(device_nick_name: params.require(:nickname))
+        @connection = Connection.new(device_id: @device.id, network_id: @network.id, )
 
-        redirect_to user_network_path(@user, @network)
+        if !params[:nickname].blank?
+        @connection.assign_attributes(device_nick_name: params[:nickname])
+        end
+
+        if @connection.save
+            redirect_to user_network_path(@user, @network)
+        else
+            render 'add_device'
+        end
     end
 
     def index

@@ -1,6 +1,8 @@
+
+
 <div class = 'form'>
 <h1 class='header'>Log In</h1>
-<%= form_for :user, url: '/sessions' do |f| %>
+<%= form_for @user, url: '/sessions', method: :post do |f| %>
 
     <div class="field">
     <svg class="svg-icon" viewBox="0 0 20 20">

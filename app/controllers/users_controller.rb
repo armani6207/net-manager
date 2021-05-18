@@ -17,7 +17,6 @@ class UsersController < ApplicationController
 
     def show
         validate_user
-
     end
 
     def edit
@@ -37,10 +36,12 @@ class UsersController < ApplicationController
                 render 'edit'
             end
         elsif params[:user][:new_password].blank?
-            @user.update(user_params)
-            redirect_to user_path(@user)
-        else
-            render 'edit'
+            @user.assign_attributes(user_params)
+            if @user.save
+                redirect_to user_path(@user)
+            else
+                render 'edit'
+            end
         end
     end
 

@@ -1,3 +1,21 @@
-<h1>New Network</h1>
 
+
+<% if @network.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@network.errors.count, "error") %>
+      kept your network from being created:
+    </h2>
+
+    <ul>
+    <% @network.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class='form'>
+<h1 class='header'>New Network</h1>
 <%= render 'form' %>
+</div>

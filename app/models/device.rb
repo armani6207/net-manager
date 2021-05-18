@@ -1,4 +1,7 @@
 class Device < ActiveRecord::Base
+    validates :name, presence: true
+    validates :device_type, presence: true
+
     has_many :connections
     has_many :networks, through: :connections
 
