@@ -1,19 +1,20 @@
 <h1><%= @network.name %></h1>
 
-<form action="/users/<%=@user.id%>/networks/<%= @network.id %>/add_device" accept-charset="UTF-8" method="get">
-    <input type="submit" value="Add Device" >
-</form>
+<%= button_to 'Edit Name', edit_user_network_path(@user, @network), method: :get  %>
+
+<%= button_to 'Add Device', new_device_form_path(@user, @network), method: :get %>
 
 <h3>Devices:</h4>
 
 <ul>
-    <% @network.devices.each do |d| %>
-        <% con = d.connections.find_by( network_id: @network.id) %>
+    <% @network.connections.each do |c| %>
         <li>
-            <h4><%= con.device_nick_name %>
-            <p><%= d.name %></p>
-            <p><%= d.device_type %></p>
-            <%= button_to "remove device", delete_connection_path(con), method: :delete  %>
+            <h4><%= c.device_nick_name %>
+            <p><%= c.device.name %></p>
+            <p><%= c.device.device_type %></p>
+            <%= button_to "remove device", delete_connection_path(c), method: :delete  %>
         <li>
     <% end %>
 </ul>
+
+<%= button_to 'Delete Network', [@user, @network], method: :delete %>

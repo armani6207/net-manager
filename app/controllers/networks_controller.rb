@@ -14,7 +14,6 @@ class NetworksController < ApplicationController
         else
             render 'new'
         end
-
     end
 
     def show
@@ -40,15 +39,21 @@ class NetworksController < ApplicationController
     def add_device
         find_network
         @device = Device.find_or_create_by(params.permit(:name, :device_type))
-        @network.devices << @device
+        @connection = @network.connections.create(device_id: @device.id)
 
-        @device.connections.find_by(network_id: @network.id).update(device_nick_name: params[:nickname])
+        @connection.update(device_nick_name: params.require(:nickname))
 
         redirect_to user_network_path(@user, @network)
     end
 
     def index
        find_user 
+    end
+
+    def destroy
+        find_network
+        @network.destroy
+        redirect_to user_networks_path(@user)
     end
 
     private

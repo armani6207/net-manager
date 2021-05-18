@@ -1,6 +1,6 @@
 <h1>Add Device</h1>
 
-<%= form_with(path: "/users/#{@user.id}/networks/#{@network.id}/add_device", method: :post) do |f| %>
+<%= form_with(path: create_device_form_path(@user.id, @network.id), method: :post) do |f| %>
 
     <%= f.label 'Nickname:' %>
     <%= f.text_field :nickname %><br>
