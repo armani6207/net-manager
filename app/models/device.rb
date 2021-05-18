@@ -6,4 +6,12 @@ class Device < ActiveRecord::Base
         [self.name, self.id]
     end
 
+    def network_count
+        self.networks.count
+    end
+
+    def self.by_type(type)
+        where(device_type: type)
+    end
+
 end

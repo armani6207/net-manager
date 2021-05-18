@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     def update
         validate_user
         
-        if params[:user][:new_password] != ""
+        if !params[:user][:new_password].blank?
             if @user.authenticate(params[:user][:password])
                 @user.assign_attributes(user_params)
                 @user.password = params[:user][:new_password]
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
             else
                 render 'edit'
             end
-        elsif params[:user][:new_password] == ""
+        elsif params[:user][:new_password].blank?
             @user.update(user_params)
             redirect_to user_path(@user)
         else

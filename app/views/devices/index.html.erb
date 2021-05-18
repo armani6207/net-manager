@@ -1,0 +1,22 @@
+<h1>Most Used Devices</h1>
+
+<div>
+    <h4>Filter:</h4>
+    <%= form_tag('/devices', method: :get) do %>
+        <%= select_tag :device_type , options_from_collection_for_select(@devices, 'device_type', "device_type"), include_blank: true %>
+
+        <%= submit_tag 'Filter' %>
+
+    <% end %>
+
+<ul>    
+    <% @device_list.sort_by{|x| -x.network_count}.each do |device| %>
+        <li>
+        <h3><%= device.name %></h3>
+        <h4><%= device.device_type %></h4>
+        <p>This device has been used <%= pluralize(device.network_count, 'time') %></p>
+        </li><br>
+    <% end %>
+</ul>
+
+</div>
