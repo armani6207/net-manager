@@ -1,4 +1,4 @@
-<h1>Create an Acount</h1>
+<h1>Edit Account</h1>
 
 <%= form_for @user do |f| %>
 
@@ -8,11 +8,11 @@
     <%= f.label :email %>
     <%= f.text_field :email %><br>
 
-    <%= f.label :password %>
+    <%= f.label :current_password %>
     <%= f.password_field :password %><br>
 
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
+    <%= f.label :new_password %>
+    <%= f.password_field :new_password %><br>
 
     <%= f.submit %>
 

@@ -16,19 +16,46 @@ class UsersController < ApplicationController
     end
 
     def show
+        validate_user
+
+    end
+
+    def edit
+        validate_user
+    end
+
+    def update
+        validate_user
+        
+        if params[:user][:new_password] != ""
+            if @user.authenticate(params[:user][:password])
+                @user.assign_attributes(user_params)
+                @user.password = params[:user][:new_password]
+                @user.save
+                redirect_to user_path(@user)
+            else
+                render 'edit'
+            end
+        elsif params[:user][:new_password] == ""
+            @user.update(user_params)
+            redirect_to user_path(@user)
+        else
+            render 'edit'
+        end
+    end
+
+    private
+
+    def validate_user
         if params[:id].to_i == session[:user_id].to_i
             @user = User.find(session[:user_id])
         else
             return head(:forbidden)
         end
-
     end
 
-
-    private
-
     def user_params
-        params.require(:user).permit(:email, :password, :password_confirmation)
+        params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 
 end

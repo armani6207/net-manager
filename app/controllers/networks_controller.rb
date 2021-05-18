@@ -8,6 +8,7 @@ class NetworksController < ApplicationController
     def create
         @network = Network.new(network_params)
         if @network.save
+            User.find(session[:user_id]).networks << @network
             redirect_to network_path(@network)
         else
             render 'new'
