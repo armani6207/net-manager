@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
   get '/' => 'static#home'
 
-  resources :networks
-
   resources :devices
 
-  resources :users, only: [:new, :create, :show, :edit, :update] 
-
-  get '/users/:id/networks' => 'users#networks', :as => 'user_networks'
+  resources :users, only: [:new, :create, :show, :edit, :update] do
+    resources :networks
+  end
 
   get '/login' => 'sessions#new', :as => 'login'
 
@@ -15,9 +13,9 @@ Rails.application.routes.draw do
 
   get '/logout' => 'sessions#destroy', :as => 'logout'
 
-  get 'networks/:id/add_device' => 'networks#add_device_form'
+  get '/users/:user_id/networks/:id/add_device' => 'networks#add_device_form'
 
-  post 'networks/:id/add_device' => 'networks#add_device'
+  post '/users/:user_id/networks/:id/add_device' => 'networks#add_device'
 
   delete '/connections/:id' => 'connections#destroy', :as => 'delete_connection'
 

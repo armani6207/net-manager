@@ -2,14 +2,15 @@ class NetworksController < ApplicationController
     before_action :require_login, only: [:new, :create]
 
     def new
-        @network = Network.new
+        find_user
+        @network = @user.networks.new
     end
 
     def create
-        @network = Network.new(network_params)
+        find_user
+        @network = @user.networks.new(network_params)
         if @network.save
-            User.find(session[:user_id]).networks << @network
-            redirect_to network_path(@network)
+            redirect_to user_network_path(@user, @network)
         else
             render 'new'
         end
@@ -22,6 +23,12 @@ class NetworksController < ApplicationController
 
     def edit
         find_network
+    end
+
+    def update
+        find_network
+        @network.update(network_params)
+        redirect_to user_network_path(@user, @network)
     end
 
     def add_device_form
@@ -37,7 +44,11 @@ class NetworksController < ApplicationController
 
         @device.connections.find_by(network_id: @network.id).update(device_nick_name: params[:nickname])
 
-        redirect_to network_path(@network)
+        redirect_to user_network_path(@user, @network)
+    end
+
+    def index
+       find_user 
     end
 
     private
@@ -47,7 +58,16 @@ class NetworksController < ApplicationController
     end
 
     def find_network
-        @network = Network.find(params[:id])
+        find_user
+        @network = @user.networks.find(params[:id])
+    end
+
+    def find_user
+        if params[:user_id].to_i == session[:user_id].to_i
+            @user = User.find(session[:user_id])
+        else
+            return head(:forbidden)
+        end
     end
 
 end

@@ -1,6 +1,6 @@
 <h1><%= @network.name %></h1>
 
-<form action="/networks/<%= @network.id %>/add_device" accept-charset="UTF-8" method="get">
+<form action="/users/<%=@user.id%>/networks/<%= @network.id %>/add_device" accept-charset="UTF-8" method="get">
     <input type="submit" value="Add Device" >
 </form>
 
