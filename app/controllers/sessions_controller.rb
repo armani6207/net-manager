@@ -14,9 +14,28 @@ class SessionsController < ApplicationController
         end
     end
 
+    def facebook_callback
+        @user = User.find_or_create_by(uid: auth['uid']) do |u|
+            u.name = auth['info']['name']
+            u.email = auth['info']['email']
+            u.image = auth['info']['image']
+            u.password_digest = 0
+        end
+
+        session[:user_id] = @user.id
+
+        redirect_to '/'
+    end
+
     def destroy
         session.clear
         redirect_to '/'
+    end
+
+    private
+
+    def auth
+        request.env['omniauth.auth']
     end
 
 
