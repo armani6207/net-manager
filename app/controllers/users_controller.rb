@@ -1,10 +1,14 @@
 class UsersController < ApplicationController
 
+    def new
+        @user = user.new
+    end
+
     def create
         unless User.exists?(email: params[:email])
             User.create(user_params)
         else
-
+            render 'new'
         end
     end
 

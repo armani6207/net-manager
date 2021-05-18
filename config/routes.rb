@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :devices
 
+  resources :users, only: [:new, :create] 
+
   get 'networks/:id/add_device' => 'networks#add_device_form'
 
   post 'networks/:id/add_device' => 'networks#add_device'
