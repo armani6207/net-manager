@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :devices
 
-  resources :users, only: [:new, :create] 
+  resources :users, only: [:new, :create, :show] 
 
   get '/login' => 'sessions#new', :as => 'login'
 

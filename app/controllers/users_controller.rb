@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+    before_action :require_login
+    skip_before_action :require_login, only: [:new, :create]
 
     def new
         @user = User.new
@@ -11,6 +13,15 @@ class UsersController < ApplicationController
         else
             render 'new'
         end
+    end
+
+    def show
+        if params[:id].to_i == session[:user_id].to_i
+            @user = User.find(session[:user_id])
+        else
+            return head(:forbidden)
+        end
+
     end
 
 
