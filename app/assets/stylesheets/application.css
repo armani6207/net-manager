@@ -13,3 +13,98 @@
  *= require_tree .
  *= require_self
  */
+
+ body {
+    font-family: 'Source Sans Pro', sans-serif;
+    color:#202020;
+    background:#e4e4e4;
+}
+
+.form {
+    text-align: center;
+    margin: 100px auto;
+    width: 350px;
+    background: #94928E;
+    padding: 60px;
+}
+
+.form input {
+    font-size: 18px;
+    padding: 10px 20px 10px 5px;
+    border: none;
+    background: none;
+}
+
+.title {
+    color:#9EB96F;
+    font-size: 40px;
+    font-family: 'Raleway', sans-serif;
+    position: relative;
+    bottom: 25px;
+}
+
+.button {
+    font-size: 18px;
+    color: black;
+    background: #9EB96F;
+    width: 90px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 30px;
+    padding: 60px;
+}
+
+.button-alt {
+
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    width: 350px;
+    font-size: 18px;
+    color: black;
+    background: #9EB96F;
+    width: 90px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 30px;
+
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+.field {
+    display: block;
+}
+.form svg {
+    height: 25px;
+    vertical-align: auto;
+}
+
+.link a {
+    color: #9CA2A8;
+}
+
+.link a:visited{
+    color: #9CA2A8;
+}
+
+
+
+.name {
+    color:#9EA2A8;
+    font-size: 30px;
+    font-family: 'Raleway', sans-serif;
+    margin-top: 0;
+}
+
+.header {
+    color:#9EB96F;
+    font-size: 30px;
+    font-family: 'Raleway', sans-serif;
+    margin-top: 0;
+}

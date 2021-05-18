@@ -1,5 +1,6 @@
 <h1><%= @network.name %></h1>
 
+
 <%= button_to 'Edit Name', edit_user_network_path(@user, @network), method: :get  %>
 
 <%= button_to 'Add Device', new_device_form_path(@user, @network), method: :get %>

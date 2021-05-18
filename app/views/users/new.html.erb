@@ -1,19 +1,27 @@
-<h1>Create an Acount</h1>
 
+<div class='form'>
+<h1 class='header'>Create an Acount</h1>
 <%= form_for @user do |f| %>
 
-    <%= f.label :name %>
-    <%= f.text_field :name %><br>
+    <div class=field>
+    <%= f.text_field :name, placeholder: "Name" %><br>
+    </div>
 
-    <%= f.label :email %>
-    <%= f.text_field :email %><br>
+    <div class=field>
+    <%= f.text_field :email, placeholder: "Email" %><br>
+    </div>
 
-    <%= f.label :password %>
-    <%= f.password_field :password %><br>
+    <div class=field>
+    <%= f.password_field :password, placeholder: "Password" %><br>
+    </div>
 
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
+    <div class=field>
+    <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %>
+    </div>
 
-    <%= f.submit %>
+    <div class='button'>
+    <%= f.submit 'Sign Up' %>
+    </div>
 
 <% end %>
+</div>

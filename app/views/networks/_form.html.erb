@@ -1,6 +1,12 @@
+<div class='form'>
 <%= form_for [@user, @network] do |f| %>
-    <%= f.label 'Name:' %>
-    <%= f.text_field :name %><br>
+    <div class='field'>
+    <%= f.text_field :name, placeholder: 'Name' %><br>
+    </div>
 
-    <%= f.submit %>
+    <div class='button'>
+    <%= f.submit 'Create' %>
+    </div>
+
 <% end %>
+</div>

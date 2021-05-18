@@ -1,27 +1,34 @@
-<h1>Add Device</h1>
 
+
+<div class='form'>
+<h1 class='header'>Add Device</h1>
 <%= form_with(path: create_device_form_path(@user.id, @network.id), method: :post) do |f| %>
 
-    <%= f.label 'Nickname:' %>
-    <%= f.text_field :nickname %><br>
+    <div class='field'>
+    <%= f.text_field :nickname,  placeholder: "Nick Name" %><br>
+    </div>
 
-    <%= f.label 'Name:' %>
-    <%= f.text_field :name, list: "device_name_autocomplete" %><br>
+    <div class=field>
+    <%= f.text_field :name,  placeholder: "Name", list: "device_name_autocomplete" %><br>
     <datalist id="device_name_autocomplete">
         <% Device.all.each do |device| %>
             <option value="<%= device.name %>">
         <% end %>
     </datalist>
+    </div>
 
-    <%= f.label "Device Type:" %>
-    <%= f.text_field :device_type, list: "device_type_autocomplete" %><br>
+    <div class='field'>
+    <%= f.text_field :device_type,  placeholder: "Device Type", list: "device_type_autocomplete" %><br>
     <datalist id="device_type_autocomplete">
         <% Device.all.each do |device| %>
             <option value="<%= device.device_type %>">
         <% end %>
     </datalist>
+    </div>
 
-
-    <%= f.submit "Add Device" %>
+    <div class='button'>
+    <%= f.submit "Add" %>
+    </div>
 
 <% end %>
+</div>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="../../assets/stylesheets/navbar.css" media="screen"/>
     <title>NetManager</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -11,6 +12,23 @@
   </head>
 
   <body>
+
+    <header>
+        <nav>
+            <ul class="nav_ul">
+                <li class="logo nav_li"><h1 class="logo"><%= link_to 'NetManager', '/' %></h1></li>
+                <% if logged_in?(session) %>
+                    <li class="account nav_li"><a href=<%= "/users/#{current_user(session).id}" %>><%= current_user(session).name %></a></li>
+                <% else %>
+                    <li class="account nav_li"><a href="/login">Log In</a></li>
+                <% end %>
+                <li class="nav_li"><a href="/devices">Popular Devices</a></li>
+                <li class="nav_li"><a href=<%= if logged_in?(session) then user_networks_path(current_user(session)) else '/login' end %>>Networks</a></li>
+            </ul>
+        </nav>
+    </header>  
+    
+
     <%= yield %>
   </body>
 </html>

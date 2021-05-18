@@ -1,19 +1,26 @@
-<h1>Edit Account</h1>
-
+<div class='form'>
+<h1 class='header'>Edit Account</h1>
 <%= form_for @user do |f| %>
 
-    <%= f.label :name %>
-    <%= f.text_field :name %><br>
+    <div class='field'>
+    <%= f.text_field :name, placeholder: "Name" %><br>
+    </div>
 
-    <%= f.label :email %>
-    <%= f.text_field :email %><br>
+    <div class='field'>
+    <%= f.text_field :email, placeholder: "Email" %><br>
+    </div>
 
-    <%= f.label :current_password %>
-    <%= f.password_field :password %><br>
+    <div class='field'>
+    <%= f.password_field :password, placeholder: "Current Password" %><br>
+    </div>
 
-    <%= f.label :new_password %>
-    <%= f.password_field :new_password %><br>
+    <div class='field'>
+    <%= f.password_field :new_password, placeholder: "New Password" %><br>
+    </div>
 
-    <%= f.submit %>
+    <div class='button'>
+    <%= f.submit 'Edit' %>
+    </div>
 
 <% end %>
+</div>

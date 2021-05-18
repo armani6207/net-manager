@@ -1,5 +1,10 @@
-<h1>Hello, <%= @user.name %>!</h1>
-
+<div class='form'>
+<h1 class='header'>Hello, <%= @user.name %>!</h1>
+<div class='button'>
 <%= button_to 'Edit Account', edit_user_path(@user), method: :get  %>
+</div>
 
+<div class='button'>
 <%= button_to 'My Networks', user_networks_path(@user), method: :get  %>
+</div>
+</div>
