@@ -1,24 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to Net Manager. A tool to keep track of all the devices on your network.
 
-Things you may want to cover:
+To deploy this website you need to download this repository
+and add a file called .env to the root of the project. This will contain your keys for facebook login.
 
-* Ruby version
+Next, run 'bundle install' to download the necissary gems
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Lastly, run 'rails s' to start the server and visit the website.
